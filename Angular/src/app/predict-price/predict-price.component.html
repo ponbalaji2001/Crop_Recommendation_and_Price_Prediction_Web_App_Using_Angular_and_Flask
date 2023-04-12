@@ -1,0 +1,104 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="predict-price.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+    <title>Price Prediction</title>
+</head>
+
+<body>
+
+    <div class="PriceContainer">
+        <form [formGroup]="myform" class="PricePredictForm" (ngSubmit)="onsubmit()">
+            <div class="priceTitle">
+                <h2>Predict price</h2>
+            </div>
+            <div class="PriceInnerContainer">
+                <p>To predict price, please fill the values below:</p>
+
+                <div class="dropdown1">
+                    <label for="Vegetable">Select Vegetable:</label>
+                    <select name="Vegetables" id="Vegetable" formControlName="vegetable" [style.border]="(myform.controls.vegetable.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                        <option value="" hidden>Vegetable</option>
+                        <option [value]="veg" *ngFor="let veg of vegetables">{{veg}}</option>
+                    </select>
+
+                    <div *ngIf="(myform.controls.vegetable.invalid && myform.controls.vegetable.touched) || (myform.controls.vegetable.invalid && submitted && myform.invalid)">
+                        <small>*Please select a vegetable</small>
+                    </div>
+                </div>
+
+                <div class="dropdown1">
+                    <label for="Season">Select Season:</label>
+                    <select name="Seasons" id="Season" formControlName="season"  [style.border]="(myform.controls.season.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                        <option value="" hidden>Season</option>
+                        <option [value]="s" *ngFor="let s of seasons">{{s}}</option>
+                    </select>
+
+                    <div *ngIf="(myform.controls.season.invalid && myform.controls.season.touched) || (myform.controls.season.invalid && submitted && myform.invalid)">
+                        <small>*Please select a season</small>
+                    </div>
+                    
+                </div>
+
+                <div class="dropdown1">
+                    <label for="Month">Select Month:</label>
+                    <select class="sss" name="Months" id="Month" formControlName="month"  [style.border]="(myform.controls.month.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                        <option value="" hidden >Month</option>
+                        <option [value]="mon" *ngFor="let mon of months">{{mon}}</option>
+                    </select>
+
+                    <div *ngIf="(myform.controls.month.invalid && myform.controls.month.touched) || (myform.controls.month.invalid && submitted && myform.invalid)">
+                        <small>*Please select a month</small>
+                    </div>
+                </div>
+
+                <div class="dropdown1">
+                    <label for="Condition">Select Condition:</label>
+                    <select name="Condition" id="Condition" formControlName="condition"  [style.border]="(myform.controls.condition.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                        <option value="" hidden>Condition</option>
+                        <option [value]="con" *ngFor="let con of conditions">{{con}}</option>
+                    </select>
+
+                  
+                    <div *ngIf="(myform.controls.condition.invalid && myform.controls.condition.touched) || (myform.controls.condition.invalid && submitted && myform.invalid)">
+                        <small>*Please select a condition</small>
+                    </div>
+                
+                </div>
+
+                <div class="dropdown1">
+                    <p>(in the past 3 months)</p>
+                    <label for="Disaster">Faced Disaster ?</label>
+                    <select name="Disaster" id="Disaster" formControlName="disaster"  [style.border]="(myform.controls.disaster.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                        <option value="" hidden>Disaster</option>
+                        <option [value]="dis" *ngFor="let dis of disasters">{{dis}}</option>
+                    </select>
+
+                    <div *ngIf="(myform.controls.disaster.invalid && myform.controls.disaster.touched) || (myform.controls.disaster.invalid && submitted && myform.invalid)">
+                        <small>*Please choose disaster option</small>
+                    </div>
+                </div>
+
+                <div class="dropdown1">
+                    <label for="temperature" class="floatLabel">Enter Temperature:</label>
+                    <input id="temperature" name="Temperature" type="text" placeholder="Temperature"
+                        formControlName="temperature"  [style.border]="(myform.controls.temperature.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+
+                    <div *ngIf="(myform.controls.temperature.errors?.['required'] && myform.controls.temperature.touched) || (myform.controls.temperature.errors?.['required'] && submitted && myform.invalid)">
+                        <small>*Please enter temperature</small>
+                    </div>
+                    <div *ngIf="myform.controls.temperature.errors?.['pattern']"><small>*Must be a numeric value</small></div>
+
+                </div>
+
+                <button class="predictBtn" type="submit" [class.invalid]="submitted && myform.invalid">Predict</button>
+            </div>
+        </form>
+    </div>
+    <div class="priceNote">
+        <p>Note:</p>
+        <p>Please fill the values in the necessary fields to predict price</p>
+    </div>
+</body>

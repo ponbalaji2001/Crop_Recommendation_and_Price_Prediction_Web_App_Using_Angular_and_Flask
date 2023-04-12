@@ -1,0 +1,37 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="loginContainer">
+        <form (ngSubmit)="checkUser()" #myForm="ngForm">
+            <div class="loginTitle">
+                <h2>Login Now</h2>
+            </div>
+            <div class="loginData">
+            <label for="Email_ID" class="floatLabel">Email ID</label>
+            <input id="Email_ID" name="Email_ID" type="text" placeholder="Your email id" [(ngModel)]="email" ngModel
+                required email #lemail="ngModel" [style.border]="(lemail.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+            <div>
+                <small *ngIf="(lemail.errors && lemail.errors['required'] && lemail.touched) ||(lemail.errors && lemail.errors['required'] && submitted && myForm.invalid)">*Email is required</small>
+                <small *ngIf="lemail.errors && lemail.errors['email'] && lemail.touched">*Email is invalid</small>
+            </div>
+
+            <label for="Password" class="floatLabel">Password</label>
+            <input id="Password" name="Password" [type]="showpassword?'text':'Password'" placeholder="Your password"
+                [(ngModel)]="password" ngModel required #lpassword="ngModel" [style.border]="(lpassword.invalid && submitted) && '1px solid rgb(238, 126, 126)'" />
+            <i (click)="passwordShow()" class="fa fa-eye eye fa-2x" *ngIf="showpassword"></i>
+            <i (click)="passwordShow()" class="fa fa-eye-slash eye fa-2x" *ngIf="!showpassword"></i>
+            <div>
+                <small *ngIf="(lpassword.invalid &&lpassword.touched) || (lpassword.invalid && submitted && myForm.invalid)">*Password is required</small>
+            </div>
+            <button type="submit"  [class.BtnInvalid]="submitted && myForm.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>

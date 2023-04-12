@@ -1,0 +1,134 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 4%;
+    background-color: #015e14;
+    position: relative;
+}
+
+header .brand{
+    display: flex;
+    margin-right: -50px;
+}
+
+.logo img {
+    width: 70px;
+    height: 50px;
+    display: inline-block;
+}
+
+header .brandName {
+    font-size: 30px;
+    color: #eee;
+    display: inline-block;
+    padding-top: 10px;
+    padding-left: 5px;
+}
+
+header nav {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+}
+
+header nav ul li {
+    list-style: none;
+    position: relative;
+}
+
+nav ul li a {
+    padding: 0 20px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #eee;
+    display: inline;
+}
+
+
+nav ul li a:hover {
+    color: #1fb843;
+    transition: all .2s ease;
+}
+
+header .dropdown_menu {
+    display: none;
+    position: absolute;
+}
+
+header nav ul li:hover .dropdown_menu {
+    display: block;
+    left:3px;
+    top: 28px;
+    background-color: #0e922d;
+    z-index: 1;
+}
+
+header nav ul li:hover .dropdown_menu ul {
+    display: block;
+    margin: 10px;
+}
+
+header nav ul li:hover .dropdown_menu ul li {
+    width: 80px;
+    padding: 5px;
+    padding-right: 90px;
+    display: block;
+}
+
+header .dropdown_menu ul li a:hover {
+    color: #015e14;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+header .btn {
+    font-size: 15px;
+    color: #eee;
+    text-decoration: none;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    border-radius: 10vh;
+    transition: all .2s ease;
+}
+
+header .login-btn{
+    display: inline;
+    padding-right: 7px;
+}
+
+header .signup-btn{
+    display: inline;
+}
+
+header .login-btn h5 {
+    font-size: 19px;
+    color: #eee;
+    padding-right: 5px;
+    display: inline;
+}
+
+header .btn-2 {
+    border: 2px solid #0e922d;
+}
+
+header .btn-2:hover {
+    border: 2px solid transparent;
+    background-color: #0e922d;
+}
+
+.fas {
+    float: right;
+    margin-left: -15px;
+    margin-right: 13px;
+    padding-top: 3px;
+
+}

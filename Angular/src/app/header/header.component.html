@@ -1,0 +1,45 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="header.component.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+    <title>Header</title>
+</head>
+<body>
+    <header>
+        <div class="brand">
+        <div class="logo">
+            <img src="/assets/img/istockphoto-1125950030-612x612-removebg-preview.png" alt="" />
+        </div>
+        <div class="brandName">FarmersGuide</div>
+        </div>
+        <nav>
+            <ul>
+                <li><a [routerLink]="['/home']">Home</a></li>
+                <li><a [routerLink]="['/about']">About us</a></li>
+                <li>
+                    <a>Predict<i class="fas fa-caret-down"></i></a>
+                    <div class="dropdown_menu">
+                        <ul>
+                            <li><a (click)="PredictYieldBtn()">Yield</a></li>
+                            <li><a (click)="PredictPriceBtn()">Price</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li><a  [routerLink]="['/contact']">Contact</a></li>
+            </ul>
+        </nav>
+       <div class="btns_container">
+        <div class="login-btn">
+            <a [routerLink]="['/login']" class="btn btn-2" *ngIf="!show">Log In</a>
+            <h5 *ngIf="show">{{Name}}</h5>
+        </div>
+        <div class="signup-btn">
+            <a href="http://localhost:4200/signup" class="btn btn-2" *ngIf="!show">Sign Up</a>
+            <a href="http://localhost:4200/home" class="btn btn-2" *ngIf="show">Log Out</a>
+        </div>
+        </div>
+    </header>
+</body>

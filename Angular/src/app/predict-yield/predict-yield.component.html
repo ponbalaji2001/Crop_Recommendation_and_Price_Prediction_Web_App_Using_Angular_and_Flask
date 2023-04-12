@@ -1,0 +1,104 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="predict-yield.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+    <title>Yield Prediction</title>
+</head>
+
+<body>
+    <div class="yieldContainer">
+        <form (ngSubmit)="Predict()" #myForm="ngForm">
+            <div class="yieldTitle">
+                <h2>Predict yield</h2>
+            </div>
+            <div class="yieldInnerContainer">
+                <p>To predict yield, please enter the values below:</p>
+
+            <div class="yieldData">
+                <label for="Nitrogen" class="floatLabel">Nitrogen (N)</label>
+                <input id="Nitrogen" name="Nitrogen" type="text" placeholder="ratio of Nitrogen content in soil (kg/ha)"  [(ngModel)]="nitrogen" ngModel  pattern="[0-9]+" required
+                    #_nitrogen="ngModel" [style.border]="((_nitrogen.errors?.['required'] || _nitrogen.errors?.['pattern']) && submitted) &&'1px solid rgb(238, 126, 126)'"/>
+                <div>
+                    <small *ngIf="(_nitrogen.errors?.['required'] && _nitrogen.touched) || (_nitrogen.errors?.['required'] && submitted && myForm.invalid)">*Nitrogen is required</small>
+                    <small *ngIf="_nitrogen.errors?.['pattern']">*Must be a numeric value</small>
+                </div>
+            </div>
+            
+            <div class="yieldData">
+                <label for="Phosphorus" class="floatLabel">Phosphorus (P)</label>
+                <input id="Phosphorus" name="Phosphorus" type="text" placeholder="ratio of Phosphorous content in soil (kg/ha)" [(ngModel)]="phosphorus" ngModel pattern="[0-9]+" required
+                    #_phosphorus="ngModel" [style.border]="((_phosphorus.errors?.['required'] || _phosphorus.errors?.['pattern']) && submitted) &&'1px solid rgb(238, 126, 126)'"/>
+                <div>
+                    <small *ngIf="(_phosphorus.errors?.['required'] && _phosphorus.touched)  || (_phosphorus.errors?.['required'] && submitted && myForm.invalid)">*Phosphorus is required</small>
+                    <small *ngIf="_phosphorus.errors?.['pattern']">*Must be a numeric value</small>
+                </div>
+            </div>
+
+            <div class="yieldData">
+                <label for="Pottasium" class="floatLabel">Pottasium (K)</label>
+                <input id="Pottasium" name="Pottasium" type="text" placeholder="ratio of Potassium content in soil (kg/ha)" [(ngModel)]="pottasium"
+                    ngModel pattern="[0-9]+" required #_pottasium="ngModel" [style.border]="((_pottasium.errors?.['required'] || _pottasium.errors?.['pattern']) && submitted) &&'1px solid rgb(238, 126, 126)'"/>
+                <div>
+                    <small *ngIf="(_pottasium.errors?.['required'] && _pottasium.touched) || (_pottasium.errors?.['required'] && submitted && myForm.invalid)">*Pottasium is required</small>
+                    <small *ngIf="_pottasium.errors?.['pattern']">*Must be a numeric value</small>
+                </div>
+            </div>
+            
+
+            <div class="yieldData">
+                <label for="pH" class="floatLabel">pH</label>
+                <input id="pH" name="pH" type="text" placeholder="pH value of the soil" [(ngModel)]="ph" ngModel  pattern="[0-9]+" required
+                    #_ph="ngModel" [style.border]="((_ph.errors?.['required'] || _ph.errors?.['pattern']) && submitted) &&'1px solid rgb(238, 126, 126)'"/>
+                <div>
+                    <small *ngIf="(_ph.errors?.['required'] && _ph.touched) || (_ph.errors?.['required'] && submitted && myForm.invalid)">*pH is required</small>
+                    <small *ngIf="_ph.errors?.['pattern']">*Must be a numeric value</small>
+                </div>
+            </div>
+
+                <br>
+
+                <div class="yieldData">
+                <label for="Temperature" class="floatLabel">Temperature</label>
+                <input id="Temperature" name="Temperature" type="text"
+                    placeholder="temperature in degree Celsius" [(ngModel)]="temperature" ngModel  pattern="[0-9]+" required #_temperature="ngModel" [style.border]="((_temperature.errors?.['required'] || _temperature.errors?.['pattern']) && submitted) &&'1px solid rgb(238, 126, 126)'">
+                <div>
+                    <small *ngIf="(_temperature.errors?.['required']  && _temperature.touched) || (_temperature.errors?.['required']  && submitted && myForm.invalid)">*Temperature is required</small>
+                    <small *ngIf="_temperature.errors?.['pattern']">*Must be a numeric value</small>
+                </div>
+                </div>
+
+                <div class="yieldData">
+                <label for="Humidity" class="floatLabel">Humidity</label>
+                <input id="Humidity" name="Humidity" type="text"
+                    placeholder="relative humidity in %" [(ngModel)]="humidity" ngModel  pattern="[0-9]+" required #_humidity="ngModel" [style.border]="((_humidity.errors?.['required'] || _humidity.errors?.['pattern']) && submitted)&&'1px solid rgb(238, 126, 126)'">
+                <div>
+                    <small *ngIf="(_humidity.errors?.['required']  && _humidity.touched) || (_humidity.errors?.['required']  && submitted && myForm.invalid)">*Humidity is required</small>
+                    <small *ngIf="_humidity.errors?.['pattern']">*Must be a numeric value</small>
+                </div>
+                </div>
+
+                <div class="yieldData">
+                <label for="Rainfall" class="Rainfall">Rainfall</label>
+                <input id="Rainfall" name="Rainfall" type="text" placeholder="rainfall in mm" [(ngModel)]="rainfall" ngModel
+                    required  pattern="[0-9]+" #_rainfall="ngModel" [style.border]="((_rainfall.errors?.['required'] || _rainfall.errors?.['pattern']) && submitted) &&'1px solid rgb(238, 126, 126)'">
+                <div>
+                    <small *ngIf="(_rainfall.errors?.['required']  && _rainfall.touched)  || (_rainfall.errors?.['required']  && submitted && myForm.invalid)">*Rainfall is required</small>
+                    <small *ngIf="_rainfall.errors?.['pattern']">*Must be a numeric value</small>
+                </div> 
+                </div>
+                <button type="submit" [class.invalid]="submitted && myForm.invalid">Predict</button>
+            </div>
+        </form>
+    </div>
+    <div class="yieldNote">
+        <p>Note:</p>
+        <p class="note-1">Please enter the values in the necessary fields as mentioned to predict suitable crop</p>
+        <p>Our crop recommendation system is designed to recommend suitable crops <br>only for the following crops:</p>
+        <p>" rice, maize, chickpea, kidneybeans, pigeonpeas, mothbeans, mungbean,<br> 
+            blackgram, lentil, pomegranate, banana, mango, grapes, watermelon,<br>
+            muskmelon, apple, orange, papaya, coconut, cotton, jute, coffee "</p>
+    </div>
+</body>
+

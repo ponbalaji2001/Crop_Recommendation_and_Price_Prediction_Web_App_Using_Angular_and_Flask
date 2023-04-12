@@ -1,0 +1,154 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFF8DC;
+}
+
+.yieldContainer {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.yieldTitle {
+    background-color: #5ca107;
+    width: 100%;
+    height: 14.5%;
+    position: relative;
+    text-align: center;
+    padding-top: 7.25px;
+}
+
+.yieldTitle h2 {
+    text-align: center;
+    font-size: 33px;
+    color: #eee;
+    padding-top: 22px;
+}
+
+.yieldInnerContainer p {
+    font-size: 17px;
+    padding-top: 70px;
+    color: rgb(106, 106, 106);
+    padding-bottom: 5px;
+}
+
+.yieldContainer form {
+    background:#f9f9f9;
+    width: 1350px;
+    height: 700px;
+    margin: 0 auto 0 auto;
+    box-shadow: 0 0 15px #908f8f;
+    border-radius: 2px;
+    display: block;
+    text-align: center;
+    justify-content: space-between;
+}
+
+.yieldData {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.yieldData input {
+    background: #f9f9f9;
+    border: 1.5px solid #bebebe;
+    font-size: 13.5px;
+    padding: 12.8px 8px;
+    border-radius: 2px;
+    font-family: 'Roboto', sans-serif;
+    width: 275px;
+    outline: none;
+    transform: translateY(3.9em);
+    display: inline;
+    margin-top: 30px;
+    margin-bottom: 75px;
+    color: #626262;
+}
+
+.yieldData ::placeholder {
+    color: rgb(172, 172, 170);
+    opacity: 1;
+    font-size: 13px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.yieldData input:focus,
+.yieldData input:hover{
+    border: 3px solid #b6e978;
+}
+
+.yieldData label {
+    color: rgb(113, 113, 113);
+    font-size: 16px;
+    font-weight: 400;
+    background-color: rgba(178, 173, 173, 0);
+    padding-left: 5px;
+    padding-right: auto;
+    padding-top: 60px;
+    position: absolute;
+    text-align: center;
+    display: inline;
+    position: absolute;
+}
+
+
+.yieldInnerContainer button {
+    background-color: #5ca107;
+    box-shadow: 0 3px 0 0 darken;
+    border-radius: 2px;
+    border: none;
+    color:#eee;
+    cursor: pointer;
+    display: block;
+    font-size: 19px;
+    line-height: 25.6px;
+    outline: none;
+    padding: 15px 0 15px;
+    margin: 70px auto 0 auto;
+    text-shadow: 0 1px #5ca107;
+    text-align: center;
+    font-weight: bold;
+    width: 320px;
+}
+
+.yieldInnerContainer button:hover {
+    background: #4b8405;
+    text-shadow: 0 1px 3px darken;
+}
+
+.yieldNote {
+    text-align: center;
+    padding-bottom: 70px;
+    margin-top: -50px;
+}
+
+.yieldNote p {
+    font-size: 13px;
+    color: #247d54;
+    padding-top: 8px;
+    text-align: center;
+    line-height: 20px;
+}
+
+.yieldNote .note-1{
+    padding-bottom: 10px;
+}
+
+
+.yieldData input.ng-invalid.ng-touched {
+    border: rgb(238, 126, 126) 1px solid;
+}
+
+
+.yieldData small {
+    color:rgb(238, 126, 126);
+    margin-left: -135px;
+    margin-top: -20px;
+    font-size: 12px;
+    position: absolute;
+}
+
+.yieldInnerContainer .invalid {
+    border: 1.5px solid red;
+}
+

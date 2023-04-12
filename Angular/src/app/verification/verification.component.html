@@ -1,0 +1,33 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="verification.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="verificationContainer">
+        <form (ngSubmit)="AccountVerification()" #myForm="ngForm">
+            <div class="verificationTitle">
+                <h2>Email Verification</h2>
+            </div>
+            <p>OTP sent to your registered email id</p>
+            <div class="verificationData">
+                <label for="OTP" class="floatLabel">Enter Your OTP</label>
+                <input id="OTP" name="OTP" type="text" class="form-control" placeholder="4 digit number" [(ngModel)]="otp" ngModel
+                  pattern="[0-9]+" required #_otp="ngModel" [style.border]="((_otp.invalid && submitted) || ((_otp.invalid && submitted) && (_otp.value.isNaN  || _otp.value.length !== 4))) &&'1px solid rgb(238, 126, 126)'">
+                <div>
+                <small *ngIf="_otp.errors?.['required'] && submitted">*OTP is required</small>
+                <small *ngIf="_otp.errors?.['pattern'] && submitted">*OTP should be a numeric value</small>
+                <small *ngIf="(_otp.valid && submitted) && (_otp.value.length !== 4)">
+                    *OTP should be a 4-digit number
+                </small>
+                
+                </div>
+                <button type="submit" (click)="submitted = true" [class.BtnInvalid]="submitted && myForm.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>

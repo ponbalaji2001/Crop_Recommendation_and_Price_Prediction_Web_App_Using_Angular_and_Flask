@@ -1,0 +1,173 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFF8DC;
+}
+
+.contactFormContainer {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.contactTitle {
+    background-color: #5ca107;
+    width: 100%;
+    height: 90px;
+    position: relative;
+    padding-top: 7.25px;
+}
+
+.contactForm{
+    background: #f9f9f9;
+    width: 850px;
+    height: 705px;
+    margin: 0px auto;
+    box-shadow: 0 0 15px #908f8f;
+    border-radius: 2px;
+    display: block;
+    text-align: center;
+    justify-content: space-between;
+}
+
+
+.contactTitle h2 {
+    font-size: 36px;
+    color: #eee;
+    padding-top: 18px;
+
+}
+
+.contactInnerContainer p {
+    font-size: 24px;
+    padding-top: 55px;
+    color: #888787;
+    margin-left: -380px;
+
+}
+
+.contactData {
+    display: inline-block;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.contactData input{
+    background: #f9f9f9;
+    border: 1.5px solid #bebebe;
+    font-size: 13.5px;
+    padding: 12.8px 8px;
+    border-radius: 2px;
+    font-family: 'Roboto', sans-serif;
+    width: 600px;
+    outline: none;
+    transform: translateY(3.9em);
+    display: inline;
+    margin-bottom: 50px;
+    color: #626262;
+}
+
+.contactData input:hover,
+.contactData input:focus {
+    border: 3px solid #b6e978;
+
+}
+
+.contactData ::placeholder {
+    color:rgb(172, 172, 170);
+    font-size: 13.5px;
+    opacity: 1;
+    font-family: 'Roboto', sans-serif;
+}
+
+.contactData label {
+    color:rgb(113, 113, 113);
+    font-size: 16px;
+    font-weight: 400;
+    background-color: rgba(178, 173, 173, 0);
+    padding-left: 5px;
+    padding-right: auto;
+    padding-top: 30px;
+    position: absolute;
+    text-align: center;
+    display: inline;
+    position: absolute;
+
+}
+
+.contactInnerContainer button {
+    background-color: #5ca107;
+    box-shadow: 0 3px 0 0 darken;
+    border-radius: 2px;
+    border: none;
+    color: #eee;
+    cursor: pointer;
+    display: block;
+    font-size: 17px;
+    line-height: 25.6px;
+    outline: none;
+    padding: 10px 0 10px;
+    margin: 30px 125px 0;
+    text-shadow: 0 1px #5ca107;
+    text-align: center;
+    width: 180px;
+}
+
+.contactInnerContainer button:hover {
+    background: #4b8405;
+    text-shadow: 0 1px 3px darken;
+}
+
+
+.contactData #Name{
+ width: 165px;
+}
+
+.contactData #Email{
+    width: 400px;
+}
+
+.contactData textarea {
+    height: 150px;
+    padding: 10px;
+    border: 1.5px solid #bebebe;
+    width: 600px;
+    outline: none;
+    transform: translateY(3.9em);
+    margin-bottom: 50px;
+    color: #626262;
+    background: #f9f9f9;
+    font-family: 'Roboto', sans-serif;
+    font-size: 13.5px;
+}
+
+.contactData textarea:focus {
+    border: 3px solid #b6e978;
+}
+
+.contactData textarea.ng-invalid.ng-touched,
+.contactData input.ng-invalid.ng-touched {
+    border: rgb(238, 126, 126) 1px solid;
+}
+
+
+.contactData small {
+    color: rgb(238, 126, 126);
+    margin-left: -298px;
+    margin-top: 5px;
+    font-size: 12px;
+    position: absolute;
+}
+
+.contactData .invalid {
+    border:rgb(238, 126, 126);
+}
+
+.contactData .emailError{
+    margin-left:195px;
+}
+
+.contactData .nameError {
+    margin-right: -435px;
+}
+
+
+

@@ -1,0 +1,58 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+    <title>Sign up</title>
+</head>
+<body>
+    <div class="signupContainer">
+        <form (ngSubmit)="AddUser()" #myForm="ngForm">
+            <div class="signupTitle">
+                <h2>Sign Up Now</h2>
+            </div>
+            <div class="signupData">
+                <label for="Name" class="floatLabel">Name</label>
+                <input id="Name" name="Name" type="text" class="form-control" placeholder="Your name" [(ngModel)]="name"
+                    ngModel required #sname="ngModel" [style.border]="(sname.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                <div>
+                    <small *ngIf="(sname.invalid && sname.touched) || (sname.invalid && submitted && myForm.invalid)">*Name is required</small>
+                </div>
+
+                <label for="Email_ID" class="floatLabel">Email ID</label>
+                <input id="Email_ID" name="Email_ID" type="text" placeholder="Your email id" [(ngModel)]="email" ngModel
+                    required email #semail="ngModel" [style.border]="(semail.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                <div>
+                    <small *ngIf="(semail.errors && semail.errors['required'] && semail.touched) ||(semail.errors && semail.errors['required'] && submitted && myForm.invalid)">*Email is
+                        required</small>
+                    <small *ngIf="semail.errors && semail.errors['email'] && semail.touched">*Email is invalid</small>
+                </div>
+
+                <label for="Password" class="floatLabel">Password</label>
+                <input id="Password" name="Password" [type]="showpassword?'text':'Password'" placeholder="Your password"
+                    [(ngModel)]="password" ngModel required #spassword="ngModel" [style.border]="(spassword.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                <i (click)="passwordShow()" class="fa fa-eye eye fa-2x" *ngIf="showpassword"></i>
+                <i (click)="passwordShow()" class="fa fa-eye-slash eye fa-2x" *ngIf="!showpassword"></i>
+                <div>
+                    <small *ngIf="(spassword.invalid && spassword.touched) || (spassword.invalid && submitted && myForm.invalid)">*Password is required</small>
+                </div>
+
+                <label for="ConfirmPassword" class="floatLabel">Confirm Password</label>
+                <input id="ConfirmPassword" name="ConfirmPassword" [type]="showConfirmPassword?'text':'Password'"
+                    placeholder="Your confirm password" [(ngModel)]="confirmPassword" ngModel required
+                    #sconfirmPassword="ngModel" [style.border]="(sconfirmPassword.invalid && submitted) &&'1px solid rgb(238, 126, 126)'">
+                <i (click)="confirmPasswordShow()" class="fa fa-eye eye fa-2x" *ngIf="showConfirmPassword"></i>
+                <i (click)="confirmPasswordShow()" class="fa fa-eye-slash eye fa-2x" *ngIf="!showConfirmPassword"></i>
+                <div>
+                    <small *ngIf="(sconfirmPassword.invalid && sconfirmPassword.touched) || (sconfirmPassword.invalid && submitted && myForm.invalid)">*Confirm Password is
+                        required</small>
+                    <small class="confirmValid"
+                        *ngIf="(!spassword.invalid && !sconfirmPassword.invalid) && password !== confirmPassword">
+                        *Password and Confirm Password must be same</small>
+                </div>
+                <button type="submit"  [class.invalid]="submitted && myForm.invalid">Submit</button>
+            </div>
+        </form>
+    </div>
+</body>

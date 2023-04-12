@@ -1,0 +1,39 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #FFF8DC;
+    padding-bottom: 120px;
+}
+
+.yieldResult h3{
+    margin-bottom: 80px;
+    text-align: center;
+    font-size: 34px;
+}
+
+.yieldResult p{
+    padding-top: 100px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 22px;
+}
+
+.yieldResult img {
+
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    display: block;
+}
+
+.yieldResult .crop{
+
+   z-index: 0;
+    margin-left: 450px;
+}
+
+.yieldResult .yield{
+   
+    margin-left: 740px;
+    margin-top: -190px;
+    z-index: 1;
+}

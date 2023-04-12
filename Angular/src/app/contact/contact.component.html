@@ -1,0 +1,61 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="contact.component.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700;900&display=swap" rel="stylesheet" />
+    <title>Contact</title>
+</head>
+
+<body>
+    <div class="contactFormContainer">
+        <form class="contactForm" (ngSubmit)="Predict()" #myForm="ngForm">
+            <div class="contactTitle">
+                <h2>Contact us</h2>
+            </div>
+            <div class="contactInnerContainer">
+                <p>Get in touch with us</p>
+
+                <div class="contactData">
+                    <label for="Name" class="floatLabel">Name</label>
+                    <input id="Name" name="Name" type="text" placeholder="Your name" [(ngModel)]="name" ngModel required #_name="ngModel"
+                        [style.border]="(_name.invalid && submitted) &&'1px solid rgb(238, 126, 126)'" />
+                    <div class="nameError">
+                        <small *ngIf="(_name.invalid && _name.touched) || (_name.invalid && submitted && myForm.invalid)">*Name is required</small>
+                    </div>
+                </div>
+
+                <div class="contactData">
+                    <label for="Email" class="Email">Email</label>
+                    <input id="Email" name="Email" type="text"
+                        placeholder="Your email" [(ngModel)]="email" ngModel required #_email="ngModel"
+                        [style.border]="(_email.invalid && submitted) &&'1px solid rgb(238, 126, 126)'" />
+                    <div class="emailError">
+                        <small *ngIf="(_email.invalid && _email.touched)  || (_email.invalid && submitted && myForm.invalid)">*Email is required</small>
+                    </div>
+                </div>
+
+                <div class="contactData">
+                    <label for="Subject" class="floatLabel">Subject</label>
+                    <input id="Subject" name="Subject" type="text"
+                        placeholder="Subject of your message" [(ngModel)]="subject" ngModel required #_subject="ngModel"
+                        [style.border]="(_subject.invalid && submitted) &&'1px solid rgb(238, 126, 126)'" />
+                    <div>
+                        <small *ngIf="(_subject.invalid && _subject.touched) || (_subject.invalid && submitted && myForm.invalid)">*Subject is required</small>
+                    </div>
+                </div>
+
+                <div class="contactData">
+                    <label for="Message" class="floatLabel">Message</label>
+                    <textarea id="Message" name="Message" placeholder="Type your message here" [(ngModel)]="message" ngModel required #_message="ngModel" 
+                    [style.border]="(_message.invalid && submitted) &&'1px solid rgb(238, 126, 126)'"></textarea>
+                    <div>
+                        <small *ngIf="(_message.invalid && _message.touched) || (_message.invalid && submitted && myForm.invalid)">*Message is required</small>
+                    </div>
+                </div>
+
+                <button type="submit" [class.invalid]="submitted && myForm.invalid">Send Message</button>
+            </div>
+        </form>
+    </div>
+</body>

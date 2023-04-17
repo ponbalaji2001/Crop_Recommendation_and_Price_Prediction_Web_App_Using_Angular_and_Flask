@@ -59,19 +59,14 @@ export class SignupComponent implements OnInit {
             } else if (res.status.statusMessage === 'new Email') {
               this.router.navigate(['verification']);
 
-              const headerss = new HttpHeaders({
-                'Access-Control-Allow-Origin':'http://localhost:4200/signup',
-                'Access-Control-Allow-Methods': 'POST',
-                'Access-Control-Allow-Headers': 'application/json',
-                'Content-Type': 'application/json',
-              });
+          
               this.http
                 .post(
                   'http://127.0.0.1:5000/api/verify/account',
                   {
                     Email: this.email,
                   },
-                  { headers: headerss }
+                  { headers: headers }
                 )
                 .subscribe(
                   (res: any) => {

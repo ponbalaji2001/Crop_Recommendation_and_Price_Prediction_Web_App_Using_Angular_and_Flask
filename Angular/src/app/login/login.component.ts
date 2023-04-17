@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     else{
   
     const headers = new HttpHeaders({
-      'Access-Control-Allow-Origin': 'http://localhost:4200/account',
+      'Access-Control-Allow-Origin': 'http://localhost:4200/login',
       'Access-Control-Allow-Methods': 'POST',
       'Access-Control-Allow-Headers': 'application/json',
       'Content-Type': 'application/json',
@@ -50,10 +50,9 @@ export class LoginComponent implements OnInit {
         (res: any) => {
           console.log(res['Name']);
 
-          if(res['Name'] === 'Invalid User') {
+          if (res['Name'] === 'Invalid User') {
             alert('Invalid User!');
-          }
-          else if (res['Name'] === 'Invalid Password') {
+          } else if (res['Name'] === 'Invalid Password') {
             alert('Invalid Password!');
           } else {
             console.log(res['_id']);

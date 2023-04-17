@@ -1,12 +1,18 @@
 body {
     font-family: 'Roboto', sans-serif;
     background-color: #FFF8DC;
+    padding-top: 220px;
     padding-bottom: 180px;
+    text-align: center;
+    position: relative;
 }
 
 .PriceResult {
     text-align: center;
-    padding-top: 120px;
+    position: absolute;
+    left: 50%;
+    padding-bottom: 135px;
+    transform: translate(-50%, -50%);
 }
 
 .PriceResult h3 {
@@ -23,13 +29,14 @@ body {
 }
 
 .veg {
-    margin-top: 50px;
-    margin-left: 580px;
+    display: block;
 }
 
 .veg img {
     width: 350px;
     height: 350px;
     object-fit: cover;
-    display: block;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
 }

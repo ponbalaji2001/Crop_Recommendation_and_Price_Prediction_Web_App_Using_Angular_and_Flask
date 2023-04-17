@@ -17,7 +17,7 @@ export class VerificationComponent {
       this.submitted = true;
     } else {
       const headers = new HttpHeaders({
-        'Access-Control-Allow-Origin': 'http://localhost:4200/account',
+        'Access-Control-Allow-Origin': 'http://localhost:4200/verification',
         'Access-Control-Allow-Methods': 'POST',
         'Access-Control-Allow-Headers': 'application/json',
         'Content-Type': 'application/json',

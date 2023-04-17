@@ -37,8 +37,8 @@
             <h5 *ngIf="show">{{Name}}</h5>
         </div>
         <div class="signup-btn">
-            <a href="http://localhost:4200/signup" class="btn btn-2" *ngIf="!show">Sign Up</a>
-            <a href="http://localhost:4200/home" class="btn btn-2" *ngIf="show">Log Out</a>
+            <a  [routerLink]="['/signup']" class="btn btn-2" *ngIf="!show">Sign Up</a>
+            <a class="btn btn-2" *ngIf="show"  (click)="logout()">Log Out</a>
         </div>
         </div>
     </header>

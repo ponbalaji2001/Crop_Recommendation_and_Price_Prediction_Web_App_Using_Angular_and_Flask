@@ -169,5 +169,8 @@ body {
     margin-right: -435px;
 }
 
+.contactFormContainer .invalid{
+   border: 1.5px solid red;
+}
 
 

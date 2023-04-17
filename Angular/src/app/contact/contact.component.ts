@@ -45,14 +45,14 @@ export class ContactComponent implements OnInit {
             Name: this.name,
             Email: this.email,
             Subject: this.subject,
-            Message: this.message
+            Message: this.message,
           },
           { headers: headers }
         )
         .subscribe(
           (res: any) => {
             console.log(res);
-            alert("Email Sent Successfully")
+            alert('Email Sent Successfully');
             this.router.navigate(['home']);
           },
           (error: any) => {

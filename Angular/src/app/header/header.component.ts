@@ -39,4 +39,10 @@ export class HeaderComponent implements OnInit {
       this.router.navigate(['predict/price']);
     }
   }
+
+  logout() {
+      this.router.navigate(['home']).then(() => {
+        location.reload();
+      });
+  }
 }

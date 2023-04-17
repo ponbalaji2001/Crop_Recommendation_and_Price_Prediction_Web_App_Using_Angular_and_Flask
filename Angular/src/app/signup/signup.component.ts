@@ -53,15 +53,14 @@ export class SignupComponent implements OnInit {
           (res: any) => {
             console.log(res.status.statusMessage);
             if (res.status.statusMessage === 'Email already exists') {
-                this.valid = false;
-                alert('Email already exists');
-                this.router.navigate(['signup']);
-            }else if (res.status.statusMessage === 'new Email') {
-              
+              this.valid = false;
+              alert('Email already exists');
+              this.router.navigate(['signup']);
+            } else if (res.status.statusMessage === 'new Email') {
               this.router.navigate(['verification']);
 
-              const headers = new HttpHeaders({
-                'Access-Control-Allow-Origin': 'http://localhost:4200/signup',
+              const headerss = new HttpHeaders({
+                'Access-Control-Allow-Origin':'http://localhost:4200/signup',
                 'Access-Control-Allow-Methods': 'POST',
                 'Access-Control-Allow-Headers': 'application/json',
                 'Content-Type': 'application/json',
@@ -72,16 +71,21 @@ export class SignupComponent implements OnInit {
                   {
                     Email: this.email,
                   },
-                  { headers: headers }
+                  { headers: headerss }
                 )
                 .subscribe(
                   (res: any) => {
                     console.log(res.status.statusMessage);
 
-                    if (res.status.statusMessage ==='User data created successfully in database') {
+                    if (
+                      res.status.statusMessage ===
+                      'User data created successfully in database'
+                    ) {
                       alert('Account created successfully');
                       this.router.navigate(['login']);
-                    } else if (res.status.statusMessage === 'Email verification failed') {
+                    } else if (
+                      res.status.statusMessage === 'Email verification failed'
+                    ) {
                       alert('OTP verification failed, try again');
                       this.router.navigate(['signup']).then(() => {
                         location.reload();
@@ -98,7 +102,6 @@ export class SignupComponent implements OnInit {
                   }
                 );
             }
-
           },
           (error: any) => {
             console.log(error);

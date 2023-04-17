@@ -29,18 +29,19 @@ export class PredictYieldComponent implements OnInit {
   Predict() {
 
     if (
-      (this.nitrogen === '' && !/^[0-9]+$/.test(this.nitrogen)) ||
-      (this.phosphorus === '' && !/^[0-9]+$/.test(this.phosphorus)) ||
-      (this.pottasium === '' && !/^[0-9]+$/.test(this.pottasium)) ||
-      (this.ph === '' && !/^[0-9]+$/.test(this.ph)) ||
-      (this.temperature === '' && !/^[0-9]+$/.test(this.temperature)) ||
-      (this.humidity === '' && !/^[0-9]+$/.test(this.humidity)) ||
-      (this.rainfall === '' && !/^[0-9]+$/.test(this.rainfall))
+      (this.nitrogen === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.nitrogen) )||
+      (this.phosphorus === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.phosphorus) )||
+      (this.pottasium === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.pottasium) ) ||
+      (this.ph === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.ph))||
+      (this.temperature === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.temperature) ) ||
+      (this.humidity === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.humidity)) ||
+      (this.rainfall === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.rainfall)) 
     ) {
       this.submitted = true;
+      console.log("if");
     } else {
       const headers = new HttpHeaders({
-        'Access-Control-Allow-Origin': 'http://localhost:4200/signup',
+        'Access-Control-Allow-Origin': 'http://localhost:4200/predict/yield',
         'Access-Control-Allow-Methods': 'POST',
         'Access-Control-Allow-Headers': 'application/json',
         'Content-Type': 'application/json',

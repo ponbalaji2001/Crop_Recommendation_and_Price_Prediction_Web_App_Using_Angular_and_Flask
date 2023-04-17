@@ -5,6 +5,8 @@ import random, time
 user_otp = "None"
 
 def EmailService(endpoints, mail):
+    global user_otp
+    user_otp = "None"
 
     @endpoints.route('/sentEmail', methods=['GET','POST'])
     def send_email():
@@ -67,7 +69,7 @@ def Generate_OTP(mailID):
         if request.method == "POST":
             otp = random.randint(1000, 9999)
             msg = Message("Email Verification", sender='farmersguide4u@gmail.com',recipients=[mailID])
-            msg.body = f"FarmersGuide\nYour verification OTP is: {otp}\nvalid only 1 minute"
+            msg.body = f"FarmersGuide\nYour verification OTP is: {otp}\nvalid only 2 minute"
             mail.send(msg)
        
 
@@ -76,8 +78,8 @@ def verify_OTP():
     global user_otp
     genOTP = str(otp)
     
-    #set 1 minutes timeout for OTP
-    timeout = time.time() + (1*60) 
+    #set 2 minutes timeout for OTP
+    timeout = time.time() + (2*60) 
 
     while (user_otp == "None" and time.time() < timeout):
         time.sleep(1)

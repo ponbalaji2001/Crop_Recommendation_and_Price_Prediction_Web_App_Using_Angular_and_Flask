@@ -73,7 +73,7 @@ export class PredictPriceComponent implements OnInit {
     disaster: new FormControl('', Validators.required),
     temperature: new FormControl('', [
       Validators.required,
-      Validators.pattern('[0-9]+'),
+      Validators.pattern('^[0-9]+(.\[0-9]+)?$'),
     ]),
   });
 
@@ -86,7 +86,7 @@ export class PredictPriceComponent implements OnInit {
       this.myform.controls['month'].value === '' ||
       this.myform.controls['condition'].value === '' ||
       this.myform.controls['disaster'].value === '' ||
-      this.myform.controls['temperature'].value === ''
+      (this.myform.controls['temperature'].value === '' || !/^[0-9]+(\.[0-9]+)?$/.test(this.myform.controls['temperature'].value!))
     ) {
       this.submitted = true;
     } else {

@@ -151,6 +151,7 @@ body {
     position: absolute;
 }
 
-.dropdown1 .invalid {
+
+.PriceContainer .invalid{
     border: 1.5px solid red;
 }

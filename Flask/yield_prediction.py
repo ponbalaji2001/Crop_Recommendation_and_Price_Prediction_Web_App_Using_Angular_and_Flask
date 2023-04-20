@@ -11,13 +11,13 @@ def yieldPrediction(endpoints):
         res = {}
         try:
             req_body = request.get_json()
-            nitrogen = int((req_body["Nitrogen"]))
-            phosphorus = int((req_body["Phosphorus"]))
-            pottasium = int((req_body["Pottasium"]))
+            nitrogen = float((req_body["Nitrogen"]))
+            phosphorus = float((req_body["Phosphorus"]))
+            pottasium = float((req_body["Pottasium"]))
             ph = float((req_body["pH"]))
             temperature = float((req_body["Temperature"]))
             humidity = float((req_body["Humidity"]))
-            rainfall = int((req_body["Rainfall"]))
+            rainfall = float((req_body["Rainfall"]))
             model = joblib.load("./static/Ensemble_Random_forest (1).joblib")
             test_data = [[nitrogen, phosphorus, pottasium,temperature, humidity, ph, rainfall]]
             [result] = predict(model, test_data)

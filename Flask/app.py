@@ -6,6 +6,8 @@ from price_prediction import pricePrediction
 from Email import EmailService
 from flask_mail import Mail
 import os
+from dotenv import load_dotenv
+load_dotenv()
 
 def create_app():
     web_app = Flask(__name__)
@@ -21,8 +23,8 @@ def create_app():
 
     web_app.config['MAIL_SERVER'] = 'smtp.gmail.com'
     web_app.config['MAIL_PORT'] = 465
-    web_app.config['MAIL_USERNAME'] = 'os.getenv("EMAIL")'
-    web_app.config['MAIL_PASSWORD'] = 'os.getenv("PASSWORD")'
+    web_app.config['MAIL_USERNAME'] = os.getenv("EMAIL")
+    web_app.config['MAIL_PASSWORD'] = os.getenv("PASSWORD")
     web_app.config['MAIL_USE_TLS'] = False
     web_app.config['MAIL_USE_SSL'] = True
     mail = Mail(web_app)

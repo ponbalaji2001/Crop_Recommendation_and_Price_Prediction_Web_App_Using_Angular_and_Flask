@@ -2,9 +2,12 @@ from flask_pymongo import pymongo
 from flask import request, jsonify
 from bson import ObjectId
 from Email import Generate_OTP, verify_OTP
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 #Connect MongoDB
-con_string = "mongodb+srv://farmersguide4u:4YuKXSGrOXOCJm0W@cluster0.qsimkm5.mongodb.net/?retryWrites=true&w=majority"
+con_string = os.getenv("MONGO_URI")
 client = pymongo.MongoClient(con_string)
 
 db = client.get_database('userDatabase')

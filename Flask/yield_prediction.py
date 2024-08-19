@@ -26,7 +26,7 @@ def yieldPrediction(endpoints):
                 "statusCode": "200",
                 "statusMessage": "Prediction Done Successfully"
             }
-            return jsonify({'yield_result': str(result)})
+            return jsonify({'yield_result': str(result), 'status':status})
 
         except Exception as e:
             print(e)

@@ -1,7 +1,7 @@
 from flask_pymongo import pymongo
 from flask import request, jsonify
 from bson import ObjectId
-from Email import Generate_OTP, verify_OTP
+from Email import Generate_OTP
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -18,7 +18,7 @@ def userData(endpoints):
     #Create user account
     @endpoints.route('/create/account', methods=['GET', 'POST'])
     def createUser():
-        global user_data
+        global user_data, otp
         res = {}
         try:
             #Get user email
@@ -34,6 +34,10 @@ def userData(endpoints):
                 }
 
             else:
+                
+                #call Generate_OTP function to generate and sent OTP to the user email
+                otp = Generate_OTP(user_data["Email"])
+
                 status = {
                     "statusCode": "200",
                     "statusMessage": "new Email"
@@ -48,35 +52,44 @@ def userData(endpoints):
         res['status'] = status
         return res
     
-          
-    
- 
-    @endpoints.route('/verify/account', methods=['GET', 'POST'])
-    def verifyUser():
+    @endpoints.route('/resend/otp', methods=['GET', 'POST'])
+    def resendOTP():
+        global otp
         res = {}
         try:
-            #call Generate_OTP function to generate and sent OTP to the user email
-            Generate_OTP(user_data["Email"])
-
-            #verify OTP to create account
-            response = verify_OTP()
-            if (response == 'verified'):
+            otp = Generate_OTP(user_data["Email"])
+            status = {
+                    "statusCode": "200",
+                    "statusMessage": "User data created successfully in database"
+                }
+        except Exception as e:
+            print(e)
+            status = {
+                "statusCode": "400",
+                "statusMessage": str(e)
+            }
+        res['status'] = status
+        return res
+    
+    @endpoints.route('/verify/account', methods=['GET', 'POST'])
+    def verifyAccount():
+        res = {}
+        try:
+            req_body = request.json
+            user_otp = str(req_body["OTP"])
+            print(user_otp)
+            
+            if (otp == user_otp):
                 user_collection.insert_one(user_data)
                 status = {
                     "statusCode": "200",
                     "statusMessage": "User data created successfully in database"
                 }
 
-            elif (response == 'failed'):
+            elif (otp == user_otp):
                 status = {
                     "statusCode": "400",
                     "statusMessage": "Email verification failed"
-                }
-
-            elif (response == 'expired'):
-                status = {
-                    "statusCode": "400",
-                    "statusMessage": "OTP expired"
                 }
 
         except Exception as e:
@@ -85,12 +98,9 @@ def userData(endpoints):
                 "statusCode": "400",
                 "statusMessage": str(e)
             }
-
         res['status'] = status
         return res
         
-
-
     #check user account
     @endpoints.route('/check/account', methods=['GET','POST'])
     def checkUser():
@@ -110,15 +120,20 @@ def userData(endpoints):
                     name=user["Name"]
                     status = {
                     "statusCode": "200",
-                    "statusMessage": "User data retrieved successfully from database"
+                    "statusMessage": "User Login successfull"
                     }
-                    return jsonify({'Name': user["Name"], '_id': user_id})
                 
                 else:
-                    return jsonify({'Name': 'Invalid Password'})
+                    status = {
+                        "statusCode": "200",
+                        "statusMessage": "Invalid Password"
+                    }
                 
             else:
-                return jsonify({'Name': 'Invalid User'})
+                status = {
+                    "statusCode": "200",
+                    "statusMessage": "Invalid User"
+                }
             
         except Exception as e:
             print(e)
@@ -126,6 +141,7 @@ def userData(endpoints):
                 "statusCode": "400",
                 "statusMessage": str(e)
             }
+        res['Name'] = name
         res['status'] = status
         return res
 

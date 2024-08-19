@@ -58,44 +58,6 @@ export class SignupComponent implements OnInit {
               this.router.navigate(['signup']);
             } else if (res.status.statusMessage === 'new Email') {
               this.router.navigate(['verification']);
-
-          
-              this.http
-                .post(
-                  'http://127.0.0.1:5000/api/verify/account',
-                  {
-                    Email: this.email,
-                  },
-                  { headers: headers }
-                )
-                .subscribe(
-                  (res: any) => {
-                    console.log(res.status.statusMessage);
-
-                    if (
-                      res.status.statusMessage ===
-                      'User data created successfully in database'
-                    ) {
-                      alert('Account created successfully');
-                      this.router.navigate(['login']);
-                    } else if (
-                      res.status.statusMessage === 'Email verification failed'
-                    ) {
-                      alert('OTP verification failed, try again');
-                      this.router.navigate(['signup']).then(() => {
-                        location.reload();
-                      });
-                    } else if (res.status.statusMessage === 'OTP expired') {
-                      alert('Session Expired');
-                      this.router.navigate(['signup']).then(() => {
-                        location.reload();
-                      });
-                    }
-                  },
-                  (error: any) => {
-                    console.log(error);
-                  }
-                );
             }
           },
           (error: any) => {

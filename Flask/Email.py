@@ -1,6 +1,6 @@
 from flask import request
 from flask_mail import  Message, Mail
-import random, time
+import random
 
 user_otp = "None"
 
@@ -33,30 +33,6 @@ def EmailService(endpoints, mail):
         res['status'] = status
         return res
 
-
-    @endpoints.route('/get/userOTP', methods=['GET', 'POST'])
-    def getUserOTP():
-        global user_otp
-        res = {}
-        try:
-            req_body = request.json
-            user_otp = str(req_body["OTP"])
-            print(user_otp)
-            
-            status = {
-                "statusCode": "200",
-                "statusMessage": "OTP recieved successfully"
-            }
-
-        except Exception as e:
-            print(e)
-            status = {
-                "statusCode": "400",
-                "statusMessage": str(e)
-            }
-        res['status'] = status
-        return res
-
     return endpoints
 
 
@@ -70,34 +46,9 @@ def Generate_OTP(mailID):
             msg.body = f"FarmersGuide\nYour verification OTP is: {otp}\nvalid only 2 minute"
             mail.send(msg)
             user_otp="None"
+
+        return otp
        
-
-#verify OTP
-def verify_OTP():
-    global user_otp
-    genOTP = str(otp)
-    
-    #set 2 minutes timeout for OTP
-    timeout = time.time() + (2*60) 
-
-    while (user_otp == "None" and time.time() < timeout):
-        time.sleep(1)
-
-    if time.time() >= timeout:
-        user_otp = "None"
-        return "expired"
-
-    print("user "+user_otp)
-    print("genrated "+genOTP)
-
-    if (genOTP == user_otp):
-        user_otp = "None"
-        return "verified"
-    
-    else:
-        user_otp = "None"
-        return "failed"
-
 
 
     

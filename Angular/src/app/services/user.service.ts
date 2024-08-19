@@ -5,8 +5,11 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class UserService {
-  public user_profile = new BehaviorSubject('');
-  user_name = this.user_profile.asObservable();
+  public userName = new BehaviorSubject('');
+  user_name = this.userName.asObservable();
+
+  public userEmail = new BehaviorSubject('');
+  user_email = this.userEmail.asObservable();
 
   public show_Btn = new BehaviorSubject(false);
   show = this.show_Btn.asObservable();
@@ -14,7 +17,11 @@ export class UserService {
   constructor() {}
 
   getUserName(name: any) {
-    this.user_profile.next(name);
+    this.userName.next(name);
+  }
+
+  getUserEmail(email: any) {
+    this.userEmail.next(email);
   }
 
   loggedIn(value: boolean) {

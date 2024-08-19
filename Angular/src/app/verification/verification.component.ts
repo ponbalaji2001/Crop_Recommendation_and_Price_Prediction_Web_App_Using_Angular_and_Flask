@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { UserService } from '../services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-verification',
@@ -7,7 +9,14 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./verification.component.css'],
 })
 export class VerificationComponent {
-  constructor(private http: HttpClient) {}
+  email = ''
+  emailSub !: Subscription;
+
+  constructor(private http: HttpClient, private userServ: UserService) {
+    this.emailSub = this.userServ.user_email.subscribe((email) => {
+      this.email = email;
+    });
+  }
 
   otp: any;
   submitted = false;

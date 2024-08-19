@@ -37,6 +37,7 @@ def userData(endpoints):
                 
                 #call Generate_OTP function to generate and sent OTP to the user email
                 otp = Generate_OTP(user_data["Email"])
+                print("OTP generated - "+otp)
 
                 status = {
                     "statusCode": "200",
@@ -60,7 +61,7 @@ def userData(endpoints):
             otp = Generate_OTP(user_data["Email"])
             status = {
                     "statusCode": "200",
-                    "statusMessage": "User data created successfully in database"
+                    "statusMessage": "OTP sent successfully"
                 }
         except Exception as e:
             print(e)

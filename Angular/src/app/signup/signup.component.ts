@@ -1,6 +1,7 @@
 import { Component, OnInit} from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -8,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./signup.component.css'],
 })
 export class SignupComponent implements OnInit {
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private userServ: UserService) {}
 
   name = '';
   email = '';
@@ -57,6 +58,7 @@ export class SignupComponent implements OnInit {
               alert('Email already exists');
               this.router.navigate(['signup']);
             } else if (res.status.statusMessage === 'new Email') {
+              this.userServ.getUserEmail(this.email);
               this.router.navigate(['verification']);
             }
           },

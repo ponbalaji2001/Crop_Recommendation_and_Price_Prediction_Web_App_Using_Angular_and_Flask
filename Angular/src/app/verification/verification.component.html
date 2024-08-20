@@ -16,7 +16,7 @@
             <p *ngIf="isTimeout">Resend OTP to {{email}}</p>
             <p *ngIf="!isTimeout">OTP sent to your registered email id: {{email}}</p>
             <div class="verificationData" *ngIf="!isTimeout">
-                <label for="OTP" class="floatLabel">Enter Your OTP {{" 00:"+remainingTime}}</label>
+                <label for="OTP" class="floatLabel">Enter Your OTP {{"    00:"+remainingTime}}</label>
                 <input id="OTP" name="OTP" type="text" class="form-control" placeholder="4 digit number" [(ngModel)]="otp" ngModel
                   pattern="[0-9]+" required #_otp="ngModel" [style.border]="((_otp.invalid && submitted) || ((_otp.invalid && submitted) && (_otp.value.isNaN  || _otp.value.length !== 4))) &&'1px solid rgb(238, 126, 126)'">
                 <div>

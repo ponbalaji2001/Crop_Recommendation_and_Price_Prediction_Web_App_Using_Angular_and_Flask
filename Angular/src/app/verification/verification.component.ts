@@ -63,6 +63,17 @@ export class VerificationComponent {
         .subscribe(
           (res: any) => {
             console.log(res);
+
+            if(res.status=="User data created successfully in database"){
+              clearInterval(this.interval);
+              alert('Account Created Successfully');
+            }
+            else if(res.status=="Email verification failed"){
+              alert('Incorrect OTP');
+            }
+            else{
+              alert('Something Went Wrong');
+            }
           },
           (error: any) => {
             console.log(error);

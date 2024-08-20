@@ -87,7 +87,7 @@ def userData(endpoints):
                     "statusMessage": "User data created successfully in database"
                 }
 
-            elif (otp == user_otp):
+            else:
                 status = {
                     "statusCode": "400",
                     "statusMessage": "Email verification failed"

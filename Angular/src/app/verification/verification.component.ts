@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-verification',
@@ -12,7 +13,7 @@ export class VerificationComponent {
   email = ''
   emailSub !: Subscription;
 
-  constructor(private http: HttpClient, private userServ: UserService) {
+  constructor(private http: HttpClient, private userServ: UserService, private router: Router) {
     this.emailSub = this.userServ.user_email.subscribe((email) => {
       this.email = email;
     });
@@ -67,6 +68,7 @@ export class VerificationComponent {
             if(res.status=="User data created successfully in database"){
               clearInterval(this.interval);
               alert('Account Created Successfully');
+              this.router.navigate(['login']);
             }
             else if(res.status=="Email verification failed"){
               alert('Incorrect OTP');

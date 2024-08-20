@@ -74,13 +74,15 @@ def userData(endpoints):
     
     @endpoints.route('/verify/account', methods=['GET', 'POST'])
     def verifyAccount():
+        global otp
         res = {}
         try:
             req_body = request.json
             user_otp = str(req_body["OTP"])
-            print(user_otp)
+            print("generated otp: "+str(otp))
+            print("user entered otp: "+str(user_otp))
             
-            if (otp == user_otp):
+            if (str(otp) == user_otp):
                 user_collection.insert_one(user_data)
                 status = {
                     "statusCode": "200",

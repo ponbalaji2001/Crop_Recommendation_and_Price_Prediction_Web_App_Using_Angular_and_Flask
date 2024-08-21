@@ -43,7 +43,7 @@ def Generate_OTP(mailID):
         if request.method == "POST":
             otp = random.randint(1000, 9999)
             msg = Message("Email Verification", sender='farmersguide4u@gmail.com',recipients=[mailID])
-            msg.body = f"FarmersGuide\nYour verification OTP is: {otp}\nvalid only 2 minute"
+            msg.body = f"FarmersGuide\nYour verification OTP is: {otp}\nvalid only 1 minute"
             mail.send(msg)
             user_otp="None"
 

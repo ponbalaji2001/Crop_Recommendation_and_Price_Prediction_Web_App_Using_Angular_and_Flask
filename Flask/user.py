@@ -108,6 +108,7 @@ def userData(endpoints):
     @endpoints.route('/check/account', methods=['GET','POST'])
     def checkUser():
         global name, user_id
+        name=None
         user_id=None
         res = {}
         try:

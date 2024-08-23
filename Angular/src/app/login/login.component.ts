@@ -50,9 +50,9 @@ export class LoginComponent implements OnInit {
         (res: any) => {
           console.log(res['Name']);
 
-          if (res['Name'] === 'Invalid User') {
+          if (res.status.statusMessage === 'Invalid User') {
             alert('Invalid User!');
-          } else if (res['Name'] === 'Invalid Password') {
+          } else if (res.status.statusMessage === 'Invalid Password') {
             alert('Invalid Password!');
           } else {
             console.log(res['_id']);
